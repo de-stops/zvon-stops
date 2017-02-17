@@ -1,0 +1,12 @@
+{
+	"name":         "zvon-stops",
+	"version":      "0.0.1",
+	"main":         "index.js",
+	"files":        ["index.js"],
+	"engines" :     {"node": ">=6"},
+	"dependencies": {
+		"got": "^6.3",
+		"csv": "^1.1.1",
+		"left-pad": "^1.1.3"
+	}
+}
