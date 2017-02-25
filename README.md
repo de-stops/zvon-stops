@@ -5,23 +5,29 @@ This is a simple script to download (partially yet) [ZVON](http://www.zvon.de) s
 The script uses the following endpoint:
 
 ```
-http://delfi1.vvo-online.de:8080/delfi3/XSLT_COORD_REQUEST?&jsonp=&boundingBox=&boundingBoxLU={minx}%3A{miny}%3AWGS84%5BDD.DDDDD%5D&boundingBoxRL={maxx}%3A{maxy}%3AWGS84%5BDD.DDDDD%5D&coordOutputFormat=WGS84%5BGGZHTXX%5D&type_1=STOP&outputFormat=json&inclFilter=1
+http://delfi1.vvo-online.de:8080/delfi3/XML_STOPLIST_REQUEST?tariffZones=1&coordOutputFormat=WGS84[DD.DDDDD]
 ```
-
-It starts from bounding box `(5, 47, 15, 56)` and works down to smaller quadrants.
 
 The script produces CSV output in the following format:
 
 ```
-"stop_id","stop_name","stop_lon","stop_lat","stop_code"
-"14902691","Cottbus, Busbahnhof",14.331322219799999,51.75397272320001,""
+stop_id,stop_name,stop_lon,stop_lat,stop_code
+"14911006","Kromlau, Kromlau, Waldeisenbahn",14.62798,51.53318,""
 ```
+
+# Prerequisites
+
+These scrips use PostGIS to filter stops belonging to administrative regions covered by the transport company.  
+See [this project](https://github.com/highsource/postgis-verwaltungsgebiete) for a simple way to create a PostGIS database with administrative regions.
 
 # Usage
 
+## Windows
+
 ```
 npm install
-node index.js
+00-export-unfiltered-stops
+01-filter-stops
 ```
 
 # Disclaimer
